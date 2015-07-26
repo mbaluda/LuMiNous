@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test-src"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/usr/share/java/junit4.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/lib/java/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/lib/java/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/lib/java/easymockclassextension.jar"/>
+	<classpathentry kind="lib" path="/usr/share/java/easymock.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/bin/apache-tomcat-6.0.9/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/bin/apache-tomcat-6.0.9/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/bin/myfaces/jsf-api.jar"/>
+	<classpathentry kind="lib" path="/home/mauro/bin/myfaces/jsf-impl.jar"/>
+	<classpathentry kind="src" path="/tomcat6.0.9 aspects"/>
+	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/mauro/bin/apache-tomcat-6.0.9/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="/tomcat6.0.9 aspects/tomcatAspects.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

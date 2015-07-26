@@ -1,0 +1,94 @@
+/*******************************************************************************
+ * Copyright (c) 2008 - Jochen Wuttke.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Jochen Wuttke - initial API and implementation
+ ********************************************************************************
+ *
+ * Created: Nov 7, 2008 by Jochen Wuttke
+ * Last changed: $Id$
+ */
+ 
+ <% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_Unique\"/>\n")); 
+%>
+
+package <c:get select="$classPackageName"/>.aspects;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.logging.*;
+import <c:get select="$classPackageName"/>.*;
+
+import ch.unisi.inf.luminous.UniqueCollectionTracker;
+
+/**
+ * @author <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#117;&#116;&#116;&#107;&#101;&#106;&#64;&#108;&#117;&#46;&#117;&#110;&#105;&#115;&#105;&#46;&#99;&#104;">Jochen Wuttke</a>
+ *
+ */
+public privileged aspect <c:get select="$classFileName"/>_Unique {
+
+	//private Object unqiueProperty;
+
+	//for now we assume the assignment to the collection variable is made only once
+	//This might well be specific to the case at hand.
+	before (Collection<?> collection ): set(* <c:get select="$classFileName"/>.<c:get select="$containerAttributeName"/> ) && args(collection) {
+		if (collection != null ) {
+			UniqueCollectionTracker.addCollection( collection );
+		}
+	}
+		
+	/**
+	 * Single element add operation
+	 * @param collection
+	 */
+	pointcut addElement(<c:get select="$containedClass/@name"/> param): target(Collection+) && call( * add(..) ) && args( param );
+
+	before(Collection collection, <c:get select="$containedClass/@name"/> param): addElement(param) && target(collection) && !this(UniqueCollectionTracker+){
+		assertUnique( collection, param );
+	}
+
+	
+	private void assertUnique( Collection collection, <c:get select="$containedClass/@name"/> param ) {
+		//is "collection" a tracked collection?
+		if ( UniqueCollectionTracker.contains( collection ) ) {	
+			if ( contains( collection, param ) ) {
+				Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+					"unique property violated on <c:get select="$classFileName"/>.<c:get select="$containerAttributeName"/>: " +  param.hashCode() + " on " + param.hashCode() + ":" + getDuplicate(collection, param).hashCode(),
+					new Throwable());
+			}
+		}
+	}
+	
+	private Object getDuplicate( Collection collection, <c:get select="$containedClass/@name"/> object ) {
+		for( Object comp : collection ) {
+			<c:get select="$containedClass/@name"/> component = (<c:get select="$containedClass/@name"/>)comp;
+			if ( component != object && component.equals( object ) )
+				return comp;
+		}
+		return null;
+	}
+	
+	private boolean contains( Collection c, <c:get select="$containedClass/@name"/> object) {
+		for( Object comp : c ) {
+			<c:get select="$containedClass/@name"/> component = (<c:get select="$containedClass/@name"/>)comp;
+		<c:if test="cardinality($uniqueProperty, '0') = true()">		
+			if ( component != object && component.equals( object ) )
+		</c:if>
+		<c:if test="cardinality($uniqueProperty, '0') = false()">		
+			if ( component != object && component.get<c:get select="$uniqueProperty"/>().equals( object.get<c:get select="$uniqueProperty"/>() ) )
+		</c:if>
+				return true;
+			
+		}
+		return false;
+	}
+
+}

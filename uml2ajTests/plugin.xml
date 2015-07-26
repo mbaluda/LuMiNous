@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///testModel.ecore"
+            class="testModel.TestModelPackage"
+            genModel="model/testModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///testModel/testModel.ecore"
+            class="testModel.testModel.TestModelPackage"
+            genModel="model/testModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///testModel/testModel/sndLevel.ecore"
+            class="testModel.testModel.sndLevel.SndLevelPackage"
+            genModel="model/testModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///testModel/java/lang.ecore"
+            class="testModel.java.lang.LangPackage"
+            genModel="model/testModel.genmodel"/>
+   </extension>
+
+</plugin>

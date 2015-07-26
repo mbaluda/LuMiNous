@@ -1,0 +1,36 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+aop=aop.concat("_").concat(context.getVariable("opName").toString().replace('[',' ').replace(']',' ').replaceAll(" ","").replaceAll("name=","")); 
+aop=aop.concat("_").concat(context.getVariable("parName").toString().replace('[',' ').replace(']',' ').replaceAll(" ","").replaceAll("name=",""));
+context.setVariable("aopxml",aop.concat("_Language\"/>\n")); 
+%>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<c:replaceStrings 
+		replace="%class,%package" 
+		with="{$className},{$classPackageName}">
+//This code is generate automatically, DO NOT MODIFY!
+package %package.aspects;
+
+import %package.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_<c:get select="$opName"/>_<c:get select="$parName" />_Language{
+
+    /*
+	 * Checks if a method parameters matches a given regexp
+	 * We extract from UML all the method's parameters names
+	 */					
+	before(<c:iterate select="$op/ownedParameter/@name" var="par" delimiter=", ">Object <c:get select="$par" /></c:iterate>): call(* %class.<c:get select="$opName"/>(..))
+	    && args(<c:iterate select="$op/ownedParameter/@name" var="par" delimiter=", "><c:get select="$par" /></c:iterate>){
+	    <%-- in the regexp backslashes are escaped --%>
+		if (<c:get select="$parName"/>==null || !<c:get select="$parName"/>.toString().matches("<f:replaceAll value="\\" replacement="\\\\"><c:get select="$regexp"/></f:replaceAll>")){
+		    Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+				"Language mismatch for parameter named <c:get select="$parName"/>",
+				new Throwable());
+		}
+	}
+}
+</c:replaceStrings>

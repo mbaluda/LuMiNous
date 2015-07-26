@@ -1,0 +1,203 @@
+<%@taglib prefix="ws" id="org.eclipse.jet.workspaceTags" %>
+
+<%-- Main entry point for uml2aj --%>
+
+<ws:folder path="{$org.eclipse.jet.resource.project.name}/src/">
+
+<c:setVariable select="''" var="aopxml"/>
+
+<%-- create an aspect for every application of the Immutable property --%>
+<c:iterate select="/XMI/Immutable/@base_Class" var="classId"> 
+    <c:setVariable select="//packagedElement[@id=$classId]" var="class"/>
+    
+    <c:setVariable select="'class'" var="classVar"/>
+    <c:include template="templates/setClassPackage.jet"/>
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/Immutable.aj.jet"
+             path="{$classFileName}_Immutable.aj" />   
+    </ws:folder>
+</c:iterate>  
+
+
+<%-- if the class uses the Initialized stereotype --%>
+<c:iterate select="/XMI/Initialized/@base_Class" var="classId">
+	<c:setVariable select="$classId/.." var="initialized"/> 
+	<c:setVariable select="//packagedElement[@id=$classId]" var="class"/> 
+	
+	<%-- finding the Initializer enclosing class/package --%> 
+	<c:setVariable select="'class'" var="classVar"/>
+	<c:include template="templates/setClassPackage.jet"/>
+	
+	<%-- finding the Initializer --%>
+	<c:setVariable select="//ownedOperation[@id=$initialized/@Initializer]" var="op"/>
+	<c:setVariable select="$op/@name" var="opName"/>
+	
+	<%-- finding the Initializer enclosing class/package --%> 
+	<c:setVariable select="$op/.." var="opClass"/> 
+	<c:setVariable select="'opClass'" var="classVar"/>
+	<c:include template="templates/setClassPackage.jet"/>
+	
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/NotNullInitialized.aj.jet"
+		     path="{$classFileName}_NotNullInitialized.aj" /> 
+    <ws:file template="templates/Initialized.aj.jet"
+	         path="{$classFileName}_Initialized.aj"/>  
+    </ws:folder>
+</c:iterate>
+    
+<%-- Checking for uniquesness requires more work. We need to instantiate a single container class
+tracking the existing unique elements --%>
+<c:iterate select="/XMI/Unique" var="uniqueApplication"> 
+	<c:log>Processing application of unique stereotype <c:get select="$uniqueApplication/@id"/></c:log>
+	<c:include template="templates/uniqueAnalysis.jet"/>    
+
+    
+    <c:if test="$isClass">
+    	<ws:folder path="{$classFolderName}">
+   			<ws:file template="templates/GlobalUnique.aj.jet"
+                 path="{$classFileName}_Unique.aj" />   
+    		<ws:file template="templates/UniqueContainer.java.jet"
+        	     path="{$classFileName}_UniqueContainer.java" />
+        </ws:folder>
+    </c:if>
+    <c:if test="$isAssociation">
+    	<ws:folder path="{$classFolderName}">
+   			<ws:file template="templates/AssociationUnique.aj.jet"
+        		path="{$classFileName}_Unique.aj" />   
+        </ws:folder>
+    </c:if> 
+
+          
+    <ws:folder path="ch/unisi/inf/luminous">
+		<ws:copyFile src="templates/AssertionViolatedException.java" srcContext="transform" 
+					 target="AssertionViolatedException.java"/>
+	    <c:if test="$isAssociation">
+			<ws:copyFile src="templates/UniqueCollectionTracker.java" srcContext="transform" 
+					 target="UniqueCollectionTracker.java"/>
+		</c:if>
+	</ws:folder>
+</c:iterate>    
+
+<%-- creating an aspect for every application of the Language property  on an operation--%>
+<c:iterate select="/XMI/Language/@base_Parameter" var="parId">
+	<c:setVariable select="$parId/.." var="language"/> 
+	<%-- extracting the regexp --%>
+	<c:setVariable select="$language/@regexp" var="regexp"/>
+	<c:if test="count($regexp) = 0">
+		<c:setVariable select=" '.*' " var="regexp"/>
+	</c:if>
+	<%-- finding the affected parameter --%>
+	<c:setVariable select="//ownedParameter[@id=$parId]" var="par"/>
+	<c:setVariable select="$par/@name" var="parName"/>
+	<%-- finding the containing operation --%>
+	<c:setVariable select="$par/.." var="op"/>
+	<c:setVariable select="$op/@name" var="opName"/>
+	<%-- finding the containing class --%>
+	<c:setVariable select="$op/.." var="class"/> 
+    
+    <c:setVariable select="'class'" var="classVar"/>    
+    <c:include template="templates/setClassPackage.jet"/>
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/Language.aj.jet"
+             path="{$classFileName}_{$opName}_{$parName}_Language.aj" />   
+    </ws:folder>
+</c:iterate>
+
+<%-- creating an aspect for every application of the Language property on a UML Property --%>
+<c:iterate select="/XMI/Language/@base_Property" var="propId">
+	<c:setVariable select="$propId/.." var="language"/> 
+	<%-- extracting the regexp --%>
+	<c:setVariable select="$language/@regexp" var="regexp"/>
+	<%-- finding the affected attribute --%>
+	<c:setVariable select="//ownedAttribute[@id=$propId]" var="prop"/>
+	<c:setVariable select="$prop/@name" var="propName"/>
+	<%-- finding the containing class --%>
+	<c:setVariable select="$prop/.." var="class"/> 
+    
+    <c:setVariable select="'class'" var="classVar"/>    
+    <c:include template="templates/setClassPackage.jet"/>
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/LanguageProp.aj.jet"
+             path="{$classFileName}_{$propName}_Language.aj" />   
+    </ws:folder>
+</c:iterate>
+
+<%-- creating an aspect for every application of the NotNull property on operations --%>
+<c:iterate select="/XMI/NotNull/@base_Operation" var="opId">
+	<%-- finding the affected parameter --%>
+	<c:setVariable select="//ownedOperation[@id=$opId]" var="op"/>
+	<c:setVariable select="$op/@name" var="opName"/>
+	<%-- finding the containing class --%>
+	<c:setVariable select="$op/.." var="class"/>
+    
+    <c:setVariable select="'class'" var="classVar"/>    
+    <c:include template="templates/setClassPackage.jet"/>
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/NotNullReturn.aj.jet"
+             path="{$classFileName}_{$opName}_NotNullReturn.aj" />   
+    </ws:folder>
+</c:iterate>
+
+<%-- creating an aspect for every application of the NotNull property on a parameter --%>
+<c:iterate select="/XMI/NotNull/@base_Parameter" var="parId">
+	<%-- finding the affected parameter --%>
+	<c:setVariable select="//ownedParameter[@id=$parId]" var="par"/>
+	<c:setVariable select="$par/@name" var="parName"/>
+	<%-- finding the containing operation --%>
+	<c:setVariable select="$par/.." var="op"/>
+	<c:setVariable select="$op/@name" var="opName"/>
+	<%-- finding the containing class --%>
+	<c:setVariable select="$op/.." var="class"/> 
+    
+    <c:setVariable select="'class'" var="classVar"/>    
+    <c:include template="templates/setClassPackage.jet"/>
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/NotNullParameter.aj.jet"
+             path="{$classFileName}_{$opName}_{$parName}_NotNullParameter.aj" />   
+    </ws:folder>
+</c:iterate>
+
+<%-- creating an aspect for every application of the explicit realization property --%>
+<c:iterate select="/XMI/explicit/@base_Realization" var="realId">
+	<%-- finding the InterfaceRealization --%>
+	<c:setVariable select="//interfaceRealization[@id=$realId] | //packagedElement[@id=$realId]" var="realization"/>
+	<c:log><c:get select="$realization"/></c:log>
+
+	<%-- finding the affected Class --%>
+	<c:setVariable select="//packagedElement[@id=$realization/@client]" var="class"/>
+
+    <c:setVariable select="'class'" var="classVar"/>    
+    <c:include template="templates/setClassPackage.jet"/>
+    
+    <%-- finding the implemented Interface --%>
+	<c:setVariable select="//packagedElement[@id=$realization/@contract]" var="interface"/>
+   
+    <c:setVariable select="'interface'" var="classVar"/>
+	<c:include template="templates/setClassPackage.jet"/>
+
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/explicitImplementation.aj.jet"
+             path="{$classFileName}_implements_{$interfaceFileName}_explicitly.aj" />   
+    </ws:folder>
+</c:iterate>
+
+<%-- create an aspect for every application of the Comparable property --%>
+<c:iterate select="/XMI/Comparable/@base_Class" var="classId"> 
+    <c:setVariable select="//packagedElement[@id=$classId]" var="class"/>
+        
+    <c:setVariable select="'class'" var="classVar"/>
+    <c:include template="templates/setClassPackage.jet"/>
+    
+    <ws:folder path="{$classFolderName}">
+    <ws:file template="templates/Comparable.aj.jet"
+             path="{$classFileName}_Comparable.aj" />   
+    </ws:folder>
+</c:iterate>  
+	
+<%-- aop.xml file. --%>
+	<ws:folder path="META-INF">
+	<ws:file template="templates/aop.xml.jet" 
+	         path="aop.xml" />   
+    </ws:folder>
+</ws:folder>
+

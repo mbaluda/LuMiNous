@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Propcheck Plug-in
+Bundle-SymbolicName: propcheck;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: ch.unisi.inf.luminous
+Require-Bundle: org.eclipse.uml2;bundle-version="2.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

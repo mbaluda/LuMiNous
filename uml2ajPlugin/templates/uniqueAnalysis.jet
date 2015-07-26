@@ -1,0 +1,64 @@
+
+<%-- Get the name of the property that makes elements unique --%>
+<c:setVariable select="$uniqueApplication/@UniquenessProperty" var="uniqueProperty"/>
+
+
+<%-- First determine whether its a class or an association application --%>
+<c:setVariable select="$uniqueApplication/@base_Class" var="application_classId"/>
+<c:if test="count($application_classId) > 0">
+	<%-- it is a class --%>
+	<c:setVariable select="count($application_classId) > 0" var="isClass"/>
+	<c:setVariable select="-1 > 0" var="isAssociation"/>
+	
+    <c:setVariable select="//packagedElement[@id=$application_classId]" var="class"/>
+    <c:log>Stereotype applied to CLASS <c:get select="$class/@name"/></c:log>
+    
+    <c:setVariable select="'class'" var="classVar"/>
+    <c:include template="templates/setClassPackage.jet"/>
+</c:if>
+
+<c:setVariable select="$uniqueApplication/@base_Association" var="application_associationId"/>
+<c:if test="count($application_associationId) > 0">
+<%-- it is an association --%>
+	<c:setVariable select="-1 > 0" var="isClass"/>
+	<c:setVariable select="count($application_associationId) > 0" var="isAssociation"/>
+    <c:setVariable select="//packagedElement[@id=$application_associationId]" var="association"/>
+    <c:log>Stereotype applied to ASSOCIATION <c:get select="$association/@name"/></c:log>
+    
+    <%-- we assume that the assoc has an ownedEnd referencing the association itself --%>
+    <c:setVariable select="substring-after($association/@memberEnd[1], ' ')" var="ownedEndId"/>
+    <c:setVariable select="//ownedEnd[@id=$ownedEndId]/@type" var="ownedEndType"/>
+    <c:if test="count($ownedEndType) = 0">
+    	<c:setVariable select="substring-before($association/@memberEnd[1], ' ')" var="ownedEndId"/>    
+	    <c:setVariable select="//ownedEnd[@id=$ownedEndId]/@type" var="ownedEndType"/>
+    </c:if>
+    <c:log>Owned end <c:get select="//ownedEnd[@id=$ownedEndId]/@name"/> has type <c:get select="$ownedEndType"/></c:log>
+    <c:setVariable select="//packagedElement[@id=$ownedEndType]" var="containerClass"/>
+    <c:setVariable select="substring-before($association/@memberEnd[1], ' ')" var="ownedAttributeId"/>
+    <c:setVariable select="//ownedAttribute[@id=$ownedAttributeId]/@type" var="ownedAttributeType"/>
+    <c:if test="count($ownedAttributeType) = 0">
+	    <c:setVariable select="substring-after($association/@memberEnd[1], ' ')" var="ownedAttributeId"/>
+    	<c:setVariable select="//ownedAttribute[@id=$ownedAttributeId]/@type" var="ownedAttributeType"/>
+    </c:if>
+    <c:setVariable select="//packagedElement[@id=$ownedAttributeType]" var="containedClass"/>
+    <c:log>Association <c:get select="$association/@name"/> is owned by class <c:get select="$containerClass/@name"/> through attribute <c:get select="//ownedAttribute[@id=$ownedAttributeId]/@name"/> and has ownedEnd of type <c:get select="$containedClass/@name"/></c:log>
+    <c:setVariable select="//ownedAttribute[@id=$ownedAttributeId]/@name" var="containerAttributeName"/>
+    
+    <c:setVariable select="$containerClass" var="class"/>
+    <c:setVariable select="'class'" var="classVar"/>
+    <c:include template="templates/setClassPackage.jet"/>
+    
+
+	<%-- Find a potential container association for the elements --%>
+	<%-- This is a safety check, disabled and not working 
+	<c:iterate select="//packagedElement[@type='uml:Association']" var="association">
+		
+			<c:setVariable select="$owningAttribute/upperValue" var="upperBound"/>
+			<c:if test="$upperBound/@type='uml:LiteralUnlimitedNatural' or $upperBound/@type='uml:LiteralInteger' and $upperBound/@value>1">
+				<c:log>
+Detected container class <c:get select="$owningClass/@name"/> for <c:get select="$ownedEndType/@name"/>	</c:log>
+			</c:if>
+	</c:iterate> --%>
+</c:if>
+
+

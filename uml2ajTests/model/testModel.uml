@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UML4Java="http:///schemas/UML4Java/_C6DvsDRlEdyr699Q7nZK0g/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:propcheck="http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2" xmlns:propcheck_1="http:///schemas/propcheck/_lo-b4KwJEd2CQKN5zsBxOw/0" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/UML4Java/_C6DvsDRlEdyr699Q7nZK0g/1 pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_C6J2UDRlEdyr699Q7nZK0g http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2 pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_j-bv4LcxEd2qbZgDuF9t1w http:///schemas/propcheck/_lo-b4KwJEd2CQKN5zsBxOw/0 pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_lpCGQKwJEd2CQKN5zsBxOw">
+  <uml:Model xmi:id="_xeu4II-dEd2-tbgO9SQqEQ" name="testModel">
+    <packagedElement xmi:type="uml:Package" xmi:id="_-IpKIJt-Ed2Pu765Uyswvw" name="testModel">
+      <elementImport xmi:id="_3eoL4JCLEd26upWYm4f5zg">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </elementImport>
+      <elementImport xmi:id="_3eoL4ZCLEd26upWYm4f5zg">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </elementImport>
+      <elementImport xmi:id="_3eoL4pCLEd26upWYm4f5zg">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+      </elementImport>
+      <elementImport xmi:id="_3eoL45CLEd26upWYm4f5zg">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </elementImport>
+      <packagedElement xmi:type="uml:Class" xmi:id="_yvniQJCPEd26upWYm4f5zg" name="MyImmType">
+        <ownedAttribute xmi:id="_-SYa0JCPEd26upWYm4f5zg" name="s" aggregation="composite">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_DwGnwJCQEd26upWYm4f5zg" name="init">
+          <ownedParameter xmi:id="_FoH5UJCQEd26upWYm4f5zg" direction="return"/>
+          <ownedParameter xmi:id="_FoH5UZCQEd26upWYm4f5zg" name="par">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_zs97UJCPEd26upWYm4f5zg" name="MyInitType">
+        <ownedAttribute xmi:id="_XSfpUJCQEd26upWYm4f5zg" name="s" aggregation="composite">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_YLGFQJCQEd26upWYm4f5zg" name="init">
+          <ownedParameter xmi:id="_Y_IxUJCQEd26upWYm4f5zg" direction="return"/>
+          <ownedParameter xmi:id="_Y_JYYJCQEd26upWYm4f5zg" name="par">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_0l4gUJCPEd26upWYm4f5zg" name="MyImmInitType">
+        <ownedAttribute xmi:id="_23v1QJCPEd26upWYm4f5zg" name="s" aggregation="composite">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_R1cKwJCQEd26upWYm4f5zg" name="init">
+          <ownedParameter xmi:id="_S5V3wJCQEd26upWYm4f5zg" direction="return"/>
+          <ownedParameter xmi:id="_S5V3wZCQEd26upWYm4f5zg" name="par">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_sZIq0JFfEd2wE8UbjaDw1g" name="MyLanguage">
+        <ownedOperation xmi:id="_xKm1wJFfEd2wE8UbjaDw1g" name="sendEmail">
+          <ownedParameter xmi:id="_zXSvwJFfEd2wE8UbjaDw1g" direction="return"/>
+          <ownedParameter xmi:id="_u5SL8JImEd2c1ZqmnuAuXw" name="address">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_0DuQgJImEd2c1ZqmnuAuXw" name="subject">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_3UnZgJImEd2c1ZqmnuAuXw" name="sender">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_8wUPcJPiEd2wNIfa2ghcZA" name="sndLevel">
+        <packagedElement xmi:type="uml:Class" xmi:id="__ZeqEJPiEd2wNIfa2ghcZA" name="sndLevelImmType">
+          <ownedAttribute xmi:id="_FnbaEJPjEd2wNIfa2ghcZA" name="s" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_Ry9i0JPjEd2wNIfa2ghcZA" name="init">
+            <ownedParameter xmi:id="_je6AIJPjEd2wNIfa2ghcZA" name="par">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_y-eEwJ7AEd2H2Kh7r6Pdxg" name="MyNotNullReturn">
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_93e1sJ7AEd2H2Kh7r6Pdxg" name="InnerIterator">
+          <ownedOperation xmi:id="_V-2ksJ7JEd2DgMRoDWUDUQ" name="remove"/>
+          <ownedOperation xmi:id="_X7X7wJ7JEd2DgMRoDWUDUQ" name="hasNext">
+            <ownedParameter xmi:id="_aARywJ7JEd2DgMRoDWUDUQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_SZrucJ7BEd2H2Kh7r6Pdxg" name="next"/>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_nDRDMKglEd2HbNdAihyafA" name="MyLanguageProperty">
+        <ownedAttribute xmi:id="_yAJngKglEd2HbNdAihyafA" name="url">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_AZyiINcvEd2xdMAQ04CwHA" name="getUrl">
+          <ownedParameter xmi:id="_yQGOINcvEd2xdMAQ04CwHA" name="null" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_smHOkKkTEd2AmfoVEKuB2Q" name="MyCompType" clientDependency="_4jrrcKkhEd2VvczM32RpYQ">
+        <interfaceRealization xmi:id="_4jrrcKkhEd2VvczM32RpYQ" name="Realization of Comparable" supplier="_jV4tUKg3Ed2HbNdAihyafA" client="_smHOkKkTEd2AmfoVEKuB2Q" contract="_jV4tUKg3Ed2HbNdAihyafA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_-T-XcKkTEd2AmfoVEKuB2Q" name="CompChild" clientDependency="_j0v-QKkhEd2VvczM32RpYQ">
+        <generalization xmi:id="_f58ogKkUEd2AmfoVEKuB2Q" general="_smHOkKkTEd2AmfoVEKuB2Q"/>
+        <interfaceRealization xmi:id="_j0v-QKkhEd2VvczM32RpYQ" name="Realization of Comparable" supplier="_jV4tUKg3Ed2HbNdAihyafA" client="_-T-XcKkTEd2AmfoVEKuB2Q" contract="_jV4tUKg3Ed2HbNdAihyafA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_BFJekKkUEd2AmfoVEKuB2Q" name="CompChild2" clientDependency="_l0CVcKkhEd2VvczM32RpYQ">
+        <generalization xmi:id="_fLuQkKkUEd2AmfoVEKuB2Q" general="_smHOkKkTEd2AmfoVEKuB2Q"/>
+        <interfaceRealization xmi:id="_l0CVcKkhEd2VvczM32RpYQ" name="Realization of Comparable" supplier="_jV4tUKg3Ed2HbNdAihyafA" client="_BFJekKkUEd2AmfoVEKuB2Q" contract="_jV4tUKg3Ed2HbNdAihyafA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_oC8OAKnGEd2nYdBNLLJuMA" name="MyNonComparable"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_iN3icLJVEd2m1_QtzY3f9Q" name="MyUnique"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_p_R1kM26Ed2aF4nRzp6H2g" name="AUniqueContainer">
+        <ownedAttribute xmi:id="_hsQaAM27Ed2aF4nRzp6H2g" name="uniqueStuff" type="_uA_XgM26Ed2aF4nRzp6H2g" isReadOnly="true" aggregation="composite" association="_KTZdMM27Ed2aF4nRzp6H2g">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3BMXQM27Ed2aF4nRzp6H2g" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2jQeEM27Ed2aF4nRzp6H2g"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_uA_XgM26Ed2aF4nRzp6H2g" name="AUniqueElement">
+        <ownedAttribute xmi:id="_SNIZkM27Ed2aF4nRzp6H2g" name="" type="_p_R1kM26Ed2aF4nRzp6H2g" association="_KTZdMM27Ed2aF4nRzp6H2g">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ngDa8NaKEd2ugOGHBWtWbA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ngCz4NaKEd2ugOGHBWtWbA" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KTZdMM27Ed2aF4nRzp6H2g" name="A_simple_unique" memberEnd="_SNIZkM27Ed2aF4nRzp6H2g _hsQaAM27Ed2aF4nRzp6H2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_QJETIKg3Ed2HbNdAihyafA" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_gxTQsKg3Ed2HbNdAihyafA" name="lang">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_jV4tUKg3Ed2HbNdAihyafA" name="Comparable"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Y49U0NcxEd2xdMAQ04CwHA" name="MyUnique"/>
+    <profileApplication xmi:id="_adRrsNGpEd2C8IUl4ZfyeA">
+      <eAnnotations xmi:id="_adTg4NGpEd2C8IUl4ZfyeA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_lpCGQKwJEd2CQKN5zsBxOw"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_XJtfYIQcEd2j7PHkj8Dq7g"/>
+    </profileApplication>
+    <profileApplication xmi:id="_iWv-0NaKEd2ugOGHBWtWbA">
+      <eAnnotations xmi:id="_iXN44NaKEd2ugOGHBWtWbA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_C6J2UDRlEdyr699Q7nZK0g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_P6ay4OK8EdurhvLQaCx5wg"/>
+    </profileApplication>
+  </uml:Model>
+  <propcheck:Immutable xmi:id="_ksjoYKw0Ed2Pepbvoy45wA" base_Class="_yvniQJCPEd26upWYm4f5zg"/>
+  <propcheck:Initialized xmi:id="_mS4F8Kw0Ed2Pepbvoy45wA" base_Class="_zs97UJCPEd26upWYm4f5zg" Initializer="_YLGFQJCQEd26upWYm4f5zg"/>
+  <propcheck:Immutable xmi:id="_oH2qkKw0Ed2Pepbvoy45wA" base_Class="_0l4gUJCPEd26upWYm4f5zg"/>
+  <propcheck:Initialized xmi:id="_oH3RoKw0Ed2Pepbvoy45wA" base_Class="_0l4gUJCPEd26upWYm4f5zg" Initializer="_R1cKwJCQEd26upWYm4f5zg"/>
+  <propcheck:Language xmi:id="_u8JB0Kw0Ed2Pepbvoy45wA" base_Parameter="_u5SL8JImEd2c1ZqmnuAuXw" regexp="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+  <propcheck:Language xmi:id="_xaSfQKw0Ed2Pepbvoy45wA" base_Parameter="_3UnZgJImEd2c1ZqmnuAuXw" regexp="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+  <propcheck:Immutable xmi:id="_1-FakKw0Ed2Pepbvoy45wA" base_Class="__ZeqEJPiEd2wNIfa2ghcZA"/>
+  <propcheck:NotNull xmi:id="_37dtQKw0Ed2Pepbvoy45wA" base_Operation="_SZrucJ7BEd2H2Kh7r6Pdxg"/>
+  <propcheck:Language xmi:id="_8IHT4Kw0Ed2Pepbvoy45wA" xmlName="" regexp="^((ht|f)tp(s?)\:\/\/|~/|/)?([\w]+:\w+@)?([a-zA-Z]{1}([\w\-]+\.)+([\w]{2,5}))(:[\d]{1,5})?((/?\w+/)+|/?)(\w+\.[\w]{3,4})?((\?\w+=\w+)?(&amp;amp;\w+=\w+)*)?" base_Property="_yAJngKglEd2HbNdAihyafA"/>
+  <propcheck:explicit xmi:id="_QkkxAKw1Ed2Pepbvoy45wA" base_Realization="_j0v-QKkhEd2VvczM32RpYQ"/>
+  <propcheck:explicit xmi:id="_Rm5wsKw1Ed2Pepbvoy45wA" base_Realization="_l0CVcKkhEd2VvczM32RpYQ"/>
+  <propcheck:Comparable xmi:id="_8lCD8Kw1Ed2Pepbvoy45wA" base_Class="_oC8OAKnGEd2nYdBNLLJuMA"/>
+  <propcheck:Unique xmi:id="_roDk8LJVEd2m1_QtzY3f9Q" base_Class="_iN3icLJVEd2m1_QtzY3f9Q"/>
+  <propcheck:NotNull xmi:id="_w3WeoLL1Ed2P-7LLbCWfKw" base_Parameter="_0DuQgJImEd2c1ZqmnuAuXw"/>
+  <propcheck_1:Unique xmi:id="_c2qk8NGpEd2C8IUl4ZfyeA" UniquenessProperty="uniqueStuff" base_Association="_KTZdMM27Ed2aF4nRzp6H2g"/>
+  <propcheck:Comparable xmi:id="_92WJsMCgEd2q8Jdq0aCZjw" base_Class="_smHOkKkTEd2AmfoVEKuB2Q"/>
+  <UML4Java:Imports xmi:id="_icMfgNaKEd2ugOGHBWtWbA"/>
+  <UML4Java:Imports xmi:id="_ZatB4NcvEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_Xqek8NcwEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_Y5LXQNcxEd2xdMAQ04CwHA" base_Classifier="_Y49U0NcxEd2xdMAQ04CwHA"/>
+</xmi:XMI>

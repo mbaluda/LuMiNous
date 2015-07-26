@@ -1,0 +1,36 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString());
+aop=aop.concat("_implements_").concat(context.getVariable("interfaceFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_explicitly\"/>\n")); 
+%>
+<c:replaceStrings 
+		replace="%class,%package,%interface,%intPackage" 
+		with="{$className},{$classPackageName},{$interfaceName},{$interfacePackageName}">
+//This code is generate automatically, DO NOT MODIFY!
+package %package.aspects;
+
+import java.lang.reflect.Method;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_implements_%interface_explicitly {
+	after(): !cflow(adviceexecution()) && staticinitialization(%package.%class){
+		Class<?> aClass=%package.%class.class;
+		Class<?> anInterface=%intPackage.%interface.class;
+		
+		//aClass implements directly all the methods declared in anInterface
+		for (Method m: anInterface.getDeclaredMethods()){
+			try{
+				aClass.getDeclaredMethod(m.getName(), m.getParameterTypes());
+			}
+			catch (NoSuchMethodException e) {
+				Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+					"%package.%class."+m.getName()+" is not implemented explicitly",
+					new Throwable());
+			}
+		}
+	}
+}
+</c:replaceStrings>

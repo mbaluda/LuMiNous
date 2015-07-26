@@ -1,0 +1,21 @@
+#Wed Oct 22 20:39:09 CEST 2008
+eclipse.preferences.version=1
+org.aspectj.ajdt.core.compiler.lint.InvalidAbsoluteTypeName=ignore
+org.aspectj.ajdt.core.compiler.lint.NoInterfaceCtorJoinpoint=ignore
+org.aspectj.ajdt.core.compiler.lint.TypeNotExposedToWeaver=ignore
+org.aspectj.ajdt.core.compiler.lint.UnresolvableMember=ignore
+org.aspectj.ajdt.core.compiler.lint.adviceDidNotMatch=ignore
+org.aspectj.ajdt.core.compiler.lint.annotationAsTargetForDecpIgnored=ignore
+org.aspectj.ajdt.core.compiler.lint.cantFindTypeAffectingJPMatch=ignore
+org.aspectj.ajdt.core.compiler.lint.elementAlreadyAnnotated=ignore
+org.aspectj.ajdt.core.compiler.lint.enumAsTargetForDecpIgnored=ignore
+org.aspectj.ajdt.core.compiler.lint.invalidTargetForAnnotation=ignore
+org.aspectj.ajdt.core.compiler.lint.noExplicitConstructorCall=ignore
+org.aspectj.ajdt.core.compiler.lint.noJoinpointsForBridgeMethods=ignore
+org.aspectj.ajdt.core.compiler.lint.runtimeExceptionNotSoftened=ignore
+org.aspectj.ajdt.core.compiler.lint.uncheckedAdviceConversion=ignore
+org.aspectj.ajdt.core.compiler.lint.uncheckedArgument=ignore
+org.aspectj.ajdt.core.compiler.lint.unmatchedTargetKind=ignore
+org.aspectj.ajdt.core.compiler.list.UnmatchedSuperTypeInCall=ignore
+org.aspectj.ajdt.core.compiler.weaver.XNotReweavable=true
+org.aspectj.ajdt.core.compiler.weaver.outxml=true

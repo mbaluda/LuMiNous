@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project default="all">
+
+	<!--  Properties to configure input and output locations -->
+
+	<property name="aj.compiler" value="/Users/joe/.src/aspectj1.6/bin/ajc"/>
+	<property name="aj.classpath" value="/Users/joe/.src/aspectj1.6/lib/aspectjrt.jar"/>
+
+	<property name="source.jar" value="myfaces-api-1.2.4 copy.jar"/>
+	<property name="source.jar.dir" value="../TOMCAT_6_0_9/libs"/>
+	<property name="aspect.dir" value="bin"/>
+	<property name="aspect.source" value="src"/>
+	<property name="aspect.deployment.jar" value="assertions.jar"/>
+	<property name="woven.target.dir" value="woven-bin"/>
+	<property name="target.jar" value="myfaces-api-1.2.4.jar"/>
+	<property name="target.jar.dir" value="../TOMCAT_6_0_9/libs"/>
+	<property name="extra.classpath" value="../TOMCAT_6_0_9/.settings/output:${source.jar.dir}/${source.jar}:${source.jar.dir}/myfaces-imp.1.2.4.jar"/>
+	
+	<target name="debug">
+		<delete quiet="true">
+			<fileset dir="${aspect.dir}/javax/servlet" includes="**/*.class"/>
+		</delete>
+	</target>
+
+
+	<!-- This is a hack. Don't rely on this working -->
+	<target name="build">
+		<exec executable="${aj.compiler}">
+			<arg value="-cp"/>
+			<arg value="${extra.classpath}:${aj.classpath}"/>
+			<arg value="-1.5"/>
+			<arg value="-source"/>
+			<arg value="1.5"/>
+			<arg value="-proceedOnError"/>
+			<arg value="-d"/>
+			<arg value="${aspect.dir}"/>
+			<arg value="-sourceroots"/>
+			<arg value="${aspect.source}"/>
+			<arg value="-g"/>
+		</exec>
+		<copy todir="${aspect.dir}/META-INF">
+			<fileset dir="${aspect.source}/META-INF"/>
+		</copy>
+	</target>
+	
+	
+	<!--  weaves aspects statically into the classes of ONE input JAR file -->
+	<target name="weave" depends="clean">
+		<exec executable="${aj.compiler}">
+			<arg value="-cp"/>
+			<arg value="${extra.classpath}:${aj.classpath}"/>
+			<arg value="-1.5"/>
+			<arg value="-source"/>
+			<arg value="1.5"/>
+			<arg value="-proceedOnError"/>
+			<arg value="-d"/>
+			<arg value="${woven.target.dir}"/>
+			<arg value="-showWeaveInfo"/>
+			<arg value="-inpath"/>
+			<arg value="${source.jar.dir}/${source.jar}:${source.jar.dir}/myfaces-impl-1.2.4.jar:${source.jar.dir}/../work/Catalina/localhost/jsf-cardemo"/>
+			<arg value="-aspectpath"/>
+			<arg value="${aspect.dir}"/>
+		</exec>
+	</target>
+	
+	<!-- Creates a JAR file from the woven classes, and one JAR file for the aspects -->
+	<target name="jar" depends="weave">
+		<jar basedir="${woven.target.dir}" destfile="${target.jar.dir}/${target.jar}"/>
+		<jar basedir="${aspect.dir}" destfile="${target.jar.dir}/${aspect.deployment.jar}"/>
+	</target>
+	
+	<!-- deletes generated stuff -->
+	<target name="clean" depends="debug">
+		<delete file="${target.jar.dir}/${target.jar}"/>
+		<delete file="${target.jar.dir}/${aspect.deployment.jar}"/>
+		<delete dir="${woven.target.dir}"/>
+		<delete dir="${aspect.dir}"/>
+	</target>
+		
+	<target name="all" depends="clean,weave,jar"/>
+</project>

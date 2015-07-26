@@ -1,0 +1,121 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_Unique\"/>\n")); 
+%>
+
+	<c:log>Generating UNIQUE aspect <c:get select="$classFileName" />_Unique</c:log>
+	<c:if test="count($uniqueProperty) > 0">
+		<c:log>Uniqueness Property: <c:get select="$uniqueProperty"/></c:log>
+	</c:if>
+	<c:if test="count($uniqueProperty) = 0">
+		<c:log>Uniqueness Property: default</c:log>
+	</c:if>
+
+//This code is generate automatically, DO NOT MODIFY!
+package <c:get select="$classPackageName" />.aspects;
+
+import ch.unisi.inf.luminous.AssertionViolatedException;
+import <c:get select="$classPackageName" />.aspects.<c:get select="$classFileName" />_UniqueContainer;
+import <c:get select="$classPackageName" />.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_Unique pertarget( instanceCreation(<c:get select="$className" />) || setUniqueProperty(<c:get select="$className" />) ) {
+
+	private boolean lumi_uniquePropertySet = false;
+	private Object uniqueProperty = null;
+	
+	pointcut instanceCreation(<c:get select="$className" /> _consumer): this(_consumer) && execution( <c:get select="$className" />+.new(..) );
+		
+	after(<c:get select="$className" /> _consumer) : instanceCreation( _consumer ) {
+		safeAddObject( _consumer );
+		<%--<c:if test="count($uniqueProperty) = 0">--%>
+		<c:if test="cardinality($uniqueProperty, '0') = true()">		
+		lumi_uniquePropertySet = true;
+		</c:if>
+	}
+	
+	<%--<c:if test="count($uniqueProperty) > 0">--%>
+	<c:if test="cardinality($uniqueProperty, '1M') = true()">
+			<c:log>Uniqueness Property set to <c:get select="$uniqueProperty"/></c:log>
+	
+	pointcut setUniqueProperty( <c:get select="$className" /> _consumer ): target(_consumer) &&
+		call( * <c:get select="$className" />+.set<c:get select="$uniqueProperty"/>(..) );
+	
+	before( <c:get select="$className" /> _consumer ): setUniqueProperty( _consumer ) {
+		if ( lumi_uniquePropertySet ) { 
+			uniqueProperty = _consumer.get<c:get select="$uniqueProperty"/>();
+		}
+	}
+	
+	after( <c:get select="$className" /> _consumer ): setUniqueProperty( _consumer ) {
+		if ( propertyHasChanged( uniqueProperty, _consumer.get<c:get select="$uniqueProperty"/>() ) ) {
+			lumi_uniquePropertySet = true;
+			updateContainer( uniqueProperty, _consumer );
+		}
+	}
+	
+	</c:if>
+	
+	<c:if test="cardinality($uniqueProperty, '0') = true()">
+				<c:log>Uniqueness Property hashCode  (default)</c:log>
+	pointcut setUniqueProperty( <c:get select="$className" /> _consumer ): target(_consumer) &&
+		call( * <c:get select="$className" />+.set*(..) );
+	
+	before( <c:get select="$className" /> _consumer ): setUniqueProperty( _consumer ) {
+		if ( lumi_uniquePropertySet ) { 
+			uniqueProperty = _consumer.hashCode();
+		}
+	}
+	
+	after( <c:get select="$className" /> _consumer ): setUniqueProperty( _consumer ) {
+		if ( propertyHasChanged( uniqueProperty, _consumer.hashCode() ) ) {
+			lumi_uniquePropertySet = true;
+			updateContainer( uniqueProperty, _consumer );
+		}
+	}	
+	</c:if>
+	
+	private boolean propertyHasChanged( Object uniqueProperty, Object newPropertyValue ) {
+		if ( uniqueProperty == null && newPropertyValue != null ) 
+			return true;
+		if ( uniqueProperty != null ) {
+			return ! uniqueProperty.equals( newPropertyValue );
+		}
+		return false;
+	}
+	
+	private void updateContainer( Object oldKey, <c:get select="$className" /> updatedObject ) {
+		<c:get select="$classFileName" />_UniqueContainer.removeElement(oldKey, updatedObject);
+		safeAddObject( updatedObject );
+	}
+	
+	private void safeAddObject( <c:get select="$className" /> newValue ) {
+		//grab the element, dump it into the static container, catch the exception		
+		try {
+		<c:if test="count($uniqueProperty) = 0">
+			<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>addElement( newValue.hashCode(), newValue );
+		</c:if>
+		<c:if test="count($uniqueProperty) > 0">
+			<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>addElement( newValue.get<c:get select="$uniqueProperty"/>(), newValue );
+		</c:if>
+		} catch (AssertionViolatedException exception ) {
+			<c:if test="count($uniqueProperty) = 0">
+			<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>forcedAdd( newValue.hashCode(), newValue );
+				Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+					exception.getMessage() + ": trying to add key \"" + newValue.hashCode() + "\" for type " +  newValue.getClass(),
+					new Throwable());
+			<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>forcedAdd( newValue.hashCode(), newValue );
+			</c:if>
+			<c:if test="count($uniqueProperty) > 0">
+				<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>forcedAdd( newValue.get<c:get select="$uniqueProperty"/>(), newValue );
+				Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+					exception.getMessage() + ": trying to add key \"" + newValue.get<c:get select="$uniqueProperty"/>() + "\" for type " +  newValue.getClass(),
+					new Throwable());
+				<c:get select="$classFileName" />_UniqueContainer.<<c:get select="$className" />>forcedAdd( newValue.get<c:get select="$uniqueProperty"/>(), newValue );
+			</c:if>
+		} 
+	}
+}

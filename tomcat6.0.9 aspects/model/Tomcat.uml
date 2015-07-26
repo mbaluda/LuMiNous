@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:propcheck="http:///schemas/propcheck/_lo-b4KwJEd2CQKN5zsBxOw/0" xmlns:propcheck_1="http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/propcheck/_lo-b4KwJEd2CQKN5zsBxOw/0 pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_lpCGQKwJEd2CQKN5zsBxOw http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2 pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_j-bv4LcxEd2qbZgDuF9t1w">
+  <uml:Model xmi:id="_xeu4II-dEd2-tbgO9SQqEQ" name="Tomcat Example">
+    <packagedElement xmi:type="uml:Package" xmi:id="_-IpKIJt-Ed2PubECUyswvw" name="javax">
+      <packagedElement xmi:type="uml:Package" xmi:id="_AsgOAJt_Ed2PubECUyswvw" name="servlet">
+        <packagedElement xmi:type="uml:Package" xmi:id="_nrpjMJt_Ed2U5ofqNHZ7Rw" name="jsp">
+          <packagedElement xmi:type="uml:Class" xmi:id="_QsBscJVCEd2aG-UbUOMskA" name="JspFactory">
+            <ownedOperation xmi:id="_SZgh8JVCEd2aG-UbUOMskA" name="getDefaultFactory"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_qDwqEJt_Ed2U5ofqNHZ7Rw" name="tagext">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_tcrGoJt_Ed2U5ofqNHZ7Rw" name="JspIdConsumer"/>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_feF3EL_KEd2u3uV5zK2FAA" name="http">
+          <packagedElement xmi:type="uml:Interface" xmi:id="_mhvgAL_KEd2u3uV5zK2FAA" name="HttpServletResponse">
+            <ownedOperation xmi:id="_p1GuML_KEd2u3uV5zK2FAA" name="sendError">
+              <ownedParameter xmi:id="_tISWML_KEd2u3uV5zK2FAA" name="sc">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_xXp5oL_KEd2u3uV5zK2FAA" name="msg">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_cOj9UJxaEd2yIuY0mCafDw" name="el">
+        <packagedElement xmi:type="uml:Class" xmi:id="_eVFk8JxaEd2yIuY0mCafDw" name="CompositeELResolver">
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_omXkUJ7HEd2DgMRoDWUDUQ" name="FeatureIterator">
+            <ownedOperation xmi:id="_st4MQJ7HEd2DgMRoDWUDUQ" name="next"/>
+          </nestedClassifier>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_7cJx4JuCEd2-zIJO-AmP5w" name="faces">
+        <packagedElement xmi:type="uml:Package" xmi:id="_9f2H8JuCEd2-zIJO-AmP5w" name="webapp">
+          <packagedElement xmi:type="uml:Class" xmi:id="__7BJ4JuCEd2-zIJO-AmP5w" name="UIComponentClassicTagBase" isAbstract="true"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_jgbIwJxXEd2zH7P9kuSfFQ" name="component">
+          <packagedElement xmi:type="uml:Class" xmi:id="_msh4YJxXEd2zH7P9kuSfFQ" name="UIComponentBase" isAbstract="true">
+            <ownedAttribute xmi:id="_kv3L4Ky0Ed28WO-ms6k0Zw" name="children" type="_msh4YJxXEd2zH7P9kuSfFQ" aggregation="composite" association="_Gr0JcKy0Ed28WO-ms6k0Zw">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6yBbgKy0Ed28WO-ms6k0Zw" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6ISiAKy0Ed28WO-ms6k0Zw"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_Gr0JcKy0Ed28WO-ms6k0Zw" name="A_UIComponent_children" memberEnd="_OH0oAKy0Ed28WO-ms6k0Zw _kv3L4Ky0Ed28WO-ms6k0Zw">
+            <ownedEnd xmi:id="_OH0oAKy0Ed28WO-ms6k0Zw" name="" type="_msh4YJxXEd2zH7P9kuSfFQ" association="_Gr0JcKy0Ed28WO-ms6k0Zw"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_5xPRMKw2Ed2Pepbvoy45wA">
+      <eAnnotations xmi:id="_5xPRMaw2Ed2Pepbvoy45wA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_lpCGQKwJEd2CQKN5zsBxOw"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_XJtfYIQcEd2j7PHkj8Dq7g"/>
+    </profileApplication>
+  </uml:Model>
+  <propcheck:Unique xmi:id="_I1RREKw3Ed2Pepbvoy45wA" base_Class="__7BJ4JuCEd2-zIJO-AmP5w" UniquenessProperty="JspId"/>
+  <propcheck:Unique xmi:id="_BP5d4Ky1Ed28WO-ms6k0Zw" UniquenessProperty="Id" base_Association="_Gr0JcKy0Ed28WO-ms6k0Zw"/>
+  <propcheck_1:Initialized xmi:id="_7ZV3cKw2Ed2Pepbvoy45wA" base_Class="_QsBscJVCEd2aG-UbUOMskA" Initializer="_SZgh8JVCEd2aG-UbUOMskA"/>
+  <propcheck:Language xmi:id="_2IE7sL_KEd2u3uV5zK2FAA" base_Parameter="_xXp5oL_KEd2u3uV5zK2FAA" regexp="[\p{Print}&amp;&amp;\p{ASCII}]*"/>
+  <propcheck:NotNull xmi:id="_-_JggKw2Ed2Pepbvoy45wA" base_Operation="_st4MQJ7HEd2DgMRoDWUDUQ"/>
+</xmi:XMI>

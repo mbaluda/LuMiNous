@@ -1,0 +1,12 @@
+<aspectj>
+	<aspects>
+<c:get select="$aopxml" />
+	</aspects>
+	
+	<weaver options="-verbose -showWeaveInfo -Xset:weaveJavaxPackages=true">
+		<exclude within="org.apache.juli..*"/>
+		<exclude within="org.apache.log4j..*"/>
+		<exclude within="org.apache.commons.logging..*"/>
+		<exclude within="org.aspectj..*"/>
+	</weaver>
+</aspectj>

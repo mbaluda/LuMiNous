@@ -1,0 +1,28 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_Immutable\"/>\n")); 
+%>
+<c:replaceStrings 
+		replace="%class,%package" 
+		with="{$className},{$classPackageName}">
+//This code is generate automatically, DO NOT MODIFY!
+package %package.aspects;
+
+import %package.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_Immutable{
+    /*
+	 * Checks if an Immutable type object is modified
+	 */
+	before(): !cflow(adviceexecution()) && set(* %class.*) 
+			&& !cflow(call(%class.new(..))){
+		Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+			"Modifying an <<Immutable>> Object of type %class",
+			new Throwable());
+	}
+}
+</c:replaceStrings>

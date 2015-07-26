@@ -1,0 +1,18 @@
+<aspectj>
+	<aspects>
+<aspect name="javax.servlet.jsp.aspects.JspFactory_NotNullInitialized"/>
+<aspect name="javax.servlet.jsp.aspects.JspFactory_Initialized"/>
+<aspect name="javax.faces.webapp.aspects.UIComponentClassicTagBase_Unique"/>
+<aspect name="javax.faces.component.aspects.UIComponentBase_Unique"/>
+<aspect name="javax.servlet.http.aspects.HttpServletResponse_sendError_msg_Language"/>
+<aspect name="javax.el.aspects.CompositeELResolver_FeatureIterator_next_NotNullReturn"/>
+
+	</aspects>
+	
+	<weaver options="-verbose -showWeaveInfo -Xset:weaveJavaxPackages=true">
+		<exclude within="org.apache.juli..*"/>
+		<exclude within="org.apache.log4j..*"/>
+		<exclude within="org.apache.commons.logging..*"/>
+		<exclude within="org.aspectj..*"/>
+	</weaver>
+</aspectj>

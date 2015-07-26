@@ -1,0 +1,52 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_Initialized\"/>\n")); 
+%>
+<c:replaceStrings 
+		replace="%class,%package" 
+		with="{$className},{$classPackageName}">
+//This code is generate automatically, DO NOT MODIFY!
+package %package.aspects;
+
+import %package.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_Initialized pertarget(target(%class)){
+    //A boolean variable local to the aspect
+    private boolean initialized = false;
+    
+    /*
+	 * Matches any methods allowed to initialize an Initialized object
+	 * Marks the object as initialized
+	 */
+    pointcut initMethod(): target(%class) 
+    	<c:if test="count($op) > 0">
+    	&& call(* <c:get select="$opClassPackageName" />.<c:get 
+    		             select="$opClassName" />.<c:get 
+    		             select="$opName" />(..))</c:if>;
+	after() returning: !cflow(adviceexecution()) && initMethod(){
+		initialized=true;
+	}
+	
+	/*
+	 * Matches any non-initializing method
+	 * Checks if the target object is null or not initialized
+	 */
+	pointcut blockedMethods(): target(%class) 
+		&& !cflow(initMethod()) 
+		&& !cflow(call(*.new(..)))
+		&& call(* *(..))
+		&& !call(* java.lang.Object.getClass(..)); ; 
+		
+	before(): !cflow(adviceexecution()) &&  blockedMethods() {
+		if (!initialized){
+			Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+			"Accessing a non Initialized object of type %class",
+			new Throwable());
+		}
+	}
+}
+</c:replaceStrings>

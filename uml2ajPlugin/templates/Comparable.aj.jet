@@ -1,0 +1,36 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_Comparable\"/>\n")); 
+%>
+//This code is generate automatically, DO NOT MODIFY!
+package <c:get select="$classPackageName" />.aspects;
+
+import <c:get select="$classPackageName" />.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_Comparable{
+	/*
+	 * Matches Comparable subclass
+	 */
+	after(): !cflow(adviceexecution()) && staticinitialization(<c:get select="$className" />){
+		try{
+			<c:get select="$className" />.class.getDeclaredMethod("hashCode",new Class[] {});
+		}
+		catch (NoSuchMethodException e) {
+			Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+				"<c:get select="$className" /> doesn't implement the method \"hashCode()\" directly",
+				new Throwable());
+		}
+		try{
+			<c:get select="$className" />.class.getDeclaredMethod("equals",new Class[] {Object.class});
+		}
+		catch (NoSuchMethodException e) {
+			Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+				"<c:get select="$className" /> doesn't implement the method \"equals(Object)\" directly",
+				new Throwable());
+		}		
+	}
+}

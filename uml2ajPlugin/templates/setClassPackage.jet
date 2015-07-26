@@ -1,0 +1,36 @@
+<%-- --%>
+<%
+String thisClassName=context.getVariable("classVar").toString();
+context.setVariable("thisClass",context.getVariable(thisClassName));
+String classname="";
+String packagename="";
+%>
+
+<c:iterate select="sort($thisClass/@name | $thisClass/ancestor::*[@type='uml:Class']/@name,'count(ancestor::*)')" var="p">
+	<% 
+	String p=context.getVariable("p").toString().replaceAll("name=","").replace('.',' ').replaceAll(" ", "");
+	if (classname!="")
+		classname=classname.concat(".");
+	classname=classname.concat(p);
+	%>
+</c:iterate >
+
+<c:iterate select="sort($thisClass/ancestor::*[@type='uml:Package']/@name,'count(ancestor::*)')" var="p">
+	<% 
+	String p=context.getVariable("p").toString().replaceAll("name=","").replace('.',' ').replaceAll(" ", "");
+	if (packagename!="")
+		packagename=packagename.concat(".");
+	packagename=packagename.concat(p);
+	%>
+</c:iterate >
+
+
+<% 	
+context.setVariable(thisClassName.concat("Name"),classname);
+classname=classname.replace('.', '_');
+context.setVariable(thisClassName.concat("FileName"),classname);
+
+context.setVariable(thisClassName.concat("PackageName"),packagename);
+packagename=packagename.replace('.', '/');
+context.setVariable(thisClassName.concat("FolderName"),packagename.concat("/aspects")); 
+%>

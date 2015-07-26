@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UML4Java="http:///schemas/UML4Java/_C6DvsDRlEdyr699Q7nZK0g/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:propcheck="http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/UML4Java/_C6DvsDRlEdyr699Q7nZK0g/1 pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_C6J2UDRlEdyr699Q7nZK0g http:///schemas/propcheck/_j-Sl8LcxEd2qbZgDuF9t1w/2 pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_j-bv4LcxEd2qbZgDuF9t1w">
+  <uml:Model xmi:id="_GfUrENcxEd2xdMAQ04CwHA" name="tests">
+    <packageImport xmi:id="_GfUrEdcxEd2xdMAQ04CwHA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_LmbHwNcxEd2xdMAQ04CwHA" name="testModel">
+      <packagedElement xmi:type="uml:Class" xmi:id="_blcwQNcxEd2xdMAQ04CwHA" name="MyCompType" clientDependency="_GGaEkN2vEd2RuLnlWI0TOA">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AFJngNcyEd2xdMAQ04CwHA" name="compareToBehavior" specification="_AEYLcNcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>if((o == null) || (o.getClass() != this.getClass()))&#xA;&#x9;throw new java.lang.ClassCastException();&#xA;return 0;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ITN1INcyEd2xdMAQ04CwHA" name="hashCodeBehavior" specification="_ITKx0NcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return 0;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ITuygNcyEd2xdMAQ04CwHA" name="equalsBehavior" specification="_ITqhENcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>if(this == o)&#xA;&#x9;return true;&#xA;if((o == null) || (o.getClass() != this.getClass()))&#xA;&#x9;return false;&#xA;return hashCode()==o.hashCode();</body>
+        </ownedBehavior>
+        <interfaceRealization xmi:id="_GGaEkN2vEd2RuLnlWI0TOA" name="MyCompTypeImplementsComparable" supplier="_COr04Nf4Ed29yvx8hNN9SQ" client="_blcwQNcxEd2xdMAQ04CwHA" contract="_COr04Nf4Ed29yvx8hNN9SQ"/>
+        <ownedOperation xmi:id="_AEYLcNcyEd2xdMAQ04CwHA" name="compareTo" method="_AFJngNcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_AEYLcdcyEd2xdMAQ04CwHA" name="o" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_AEYLctcyEd2xdMAQ04CwHA" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ITKx0NcyEd2xdMAQ04CwHA" name="hashCode" method="_ITN1INcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_ITKx0dcyEd2xdMAQ04CwHA" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ITqhENcyEd2xdMAQ04CwHA" name="equals" method="_ITuygNcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_ITqhEdcyEd2xdMAQ04CwHA" name="o" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_ITqhEtcyEd2xdMAQ04CwHA" name="return" type="_ITdFsNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_S_qwwNcyEd2xdMAQ04CwHA" name="CompChild" clientDependency="_PAaLIN2vEd2RuLnlWI0TOA">
+        <generalization xmi:id="_XO-p0NcyEd2xdMAQ04CwHA" general="_blcwQNcxEd2xdMAQ04CwHA"/>
+        <interfaceRealization xmi:id="_PAaLIN2vEd2RuLnlWI0TOA" name="CompChildImplementsComparable" supplier="_COr04Nf4Ed29yvx8hNN9SQ" client="_S_qwwNcyEd2xdMAQ04CwHA" contract="_COr04Nf4Ed29yvx8hNN9SQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_aoLaQNcyEd2xdMAQ04CwHA" name="CompChild2" clientDependency="_Ph2O0N2wEd2RuLnlWI0TOA">
+        <generalization xmi:id="_ghJ_0NcyEd2xdMAQ04CwHA" general="_blcwQNcxEd2xdMAQ04CwHA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_kwOoUNcyEd2xdMAQ04CwHA" name="compareToBehavior" specification="_kwK98NcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return 1;</body>
+        </ownedBehavior>
+        <interfaceRealization xmi:id="_Ph2O0N2wEd2RuLnlWI0TOA" name="CompChild2ImplementsComparable" supplier="_COr04Nf4Ed29yvx8hNN9SQ" client="_aoLaQNcyEd2xdMAQ04CwHA" contract="_COr04Nf4Ed29yvx8hNN9SQ"/>
+        <ownedOperation xmi:id="_kwK98NcyEd2xdMAQ04CwHA" name="compareTo" method="_kwOoUNcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_kwK98dcyEd2xdMAQ04CwHA" name="o" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_kwK98tcyEd2xdMAQ04CwHA" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_yK-9QNcyEd2xdMAQ04CwHA" name="MyImmInitType">
+        <ownedAttribute xmi:id="_27JgoNcyEd2xdMAQ04CwHA" name="s" visibility="protected" type="_26Z5wNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_27_OINcyEd2xdMAQ04CwHA" value="null"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_26UaMNcyEd2xdMAQ04CwHA" name="MyImmInitTypeBehavior" specification="_26PhsNcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=&quot;&quot;;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_26v4ANcyEd2xdMAQ04CwHA" name="getSBehavior" specification="_26s0sNcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return s;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_265pANcyEd2xdMAQ04CwHA" name="setSBehavior" specification="_261-oNcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s = newS;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_27EBENcyEd2xdMAQ04CwHA" name="initBehavior" specification="_26_IkNcyEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=par;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_26PhsNcyEd2xdMAQ04CwHA" name="MyImmInitType" method="_26UaMNcyEd2xdMAQ04CwHA"/>
+        <ownedOperation xmi:id="_26s0sNcyEd2xdMAQ04CwHA" name="getS" method="_26v4ANcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_26s0sdcyEd2xdMAQ04CwHA" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_261-oNcyEd2xdMAQ04CwHA" name="setS" method="_265pANcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_261-odcyEd2xdMAQ04CwHA" name="newS" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_26_IkNcyEd2xdMAQ04CwHA" name="init" method="_27EBENcyEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_26_IkdcyEd2xdMAQ04CwHA" name="par" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="__bS8wNcyEd2xdMAQ04CwHA" name="MyImmType">
+        <ownedAttribute xmi:id="_DRTlANczEd2xdMAQ04CwHA" name="s" visibility="protected" type="_26Z5wNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_DRX2cNczEd2xdMAQ04CwHA" value="null"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DQynodczEd2xdMAQ04CwHA" name="MyImmTypeBehavior" specification="_DQuWMdczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=&quot;&quot;;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DQ6jcNczEd2xdMAQ04CwHA" name="getSBehavior" specification="_DQ3gINczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return s;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DRCfQNczEd2xdMAQ04CwHA" name="setSBehavior" specification="_DQ_b8NczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s = newS;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DRLpMNczEd2xdMAQ04CwHA" name="initBehavior" specification="_DRH-0NczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=par;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_DQuWMdczEd2xdMAQ04CwHA" name="MyImmType" method="_DQynodczEd2xdMAQ04CwHA"/>
+        <ownedOperation xmi:id="_DQ3gINczEd2xdMAQ04CwHA" name="getS" method="_DQ6jcNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_DQ3gIdczEd2xdMAQ04CwHA" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_DQ_b8NczEd2xdMAQ04CwHA" name="setS" method="_DRCfQNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_DQ_b8dczEd2xdMAQ04CwHA" name="newS" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_DRH-0NczEd2xdMAQ04CwHA" name="init" method="_DRLpMNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_DRH-0dczEd2xdMAQ04CwHA" name="par" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_L3pvwNczEd2xdMAQ04CwHA" name="MyInitType">
+        <ownedAttribute xmi:id="_RXv7QNczEd2xdMAQ04CwHA" name="s" visibility="protected" type="_26Z5wNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_RX0zwNczEd2xdMAQ04CwHA" value="null"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_RXQMANczEd2xdMAQ04CwHA" name="MyInitTypeBehavior" specification="_RWog8dczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=&quot;&quot;;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_RXW5sNczEd2xdMAQ04CwHA" name="getSBehavior" specification="_RXUdcNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return s;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_RXgDoNczEd2xdMAQ04CwHA" name="setSBehavior" specification="_RXcZQNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s = newS;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_RXp0oNczEd2xdMAQ04CwHA" name="initBehavior" specification="_RXmKQNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>s=par;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_RWog8dczEd2xdMAQ04CwHA" name="MyInitType" method="_RXQMANczEd2xdMAQ04CwHA"/>
+        <ownedOperation xmi:id="_RXUdcNczEd2xdMAQ04CwHA" name="getS" method="_RXW5sNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_RXUdcdczEd2xdMAQ04CwHA" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_RXcZQNczEd2xdMAQ04CwHA" name="setS" method="_RXgDoNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_RXcZQdczEd2xdMAQ04CwHA" name="newS" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_RXmKQNczEd2xdMAQ04CwHA" name="init" method="_RXp0oNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_RXmKQdczEd2xdMAQ04CwHA" name="par" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_byteQNczEd2xdMAQ04CwHA" name="MyLanguage">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_g9C1INczEd2xdMAQ04CwHA" name="sendEmailBehavior" specification="_g8_KwNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_g8_KwNczEd2xdMAQ04CwHA" name="sendEmail" method="_g9C1INczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_g8_KwdczEd2xdMAQ04CwHA" name="address" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_g8_KwtczEd2xdMAQ04CwHA" name="subject" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_g8_Kw9czEd2xdMAQ04CwHA" name="sender" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_j3w50NczEd2xdMAQ04CwHA" name="MyLanguageProperty">
+        <ownedAttribute xmi:id="_nwkXYNczEd2xdMAQ04CwHA" name="url" visibility="protected" type="_26Z5wNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_nwoBwNczEd2xdMAQ04CwHA" value=""/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nwOZINczEd2xdMAQ04CwHA" name="MyLanguagePropertyBehavior" specification="_nwKuwNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>url=par;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nwVG0NczEd2xdMAQ04CwHA" name="getUrlBehavior" specification="_nwSqkNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return url;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nwe30NczEd2xdMAQ04CwHA" name="setUrlBehavior" specification="_nwbNcNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>url = newS;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_nwKuwNczEd2xdMAQ04CwHA" name="MyLanguageProperty" method="_nwOZINczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_nwKuwdczEd2xdMAQ04CwHA" name="par" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_nwSqkNczEd2xdMAQ04CwHA" name="getUrl" method="_nwVG0NczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_nwSqkdczEd2xdMAQ04CwHA" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_nwbNcNczEd2xdMAQ04CwHA" name="setUrl" method="_nwe30NczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_nwbNcdczEd2xdMAQ04CwHA" name="newS" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xpGiwNczEd2xdMAQ04CwHA" name="MyNonComparable">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1uo0wNczEd2xdMAQ04CwHA" name="hashCodeBehavior" specification="_1ulxcNczEd2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return 0;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_1ulxcNczEd2xdMAQ04CwHA" name="hashCode" method="_1uo0wNczEd2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_1ulxcdczEd2xdMAQ04CwHA" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7z90QNczEd2xdMAQ04CwHA" name="MyNotNullReturn">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Aj8xcNc0Ed2xdMAQ04CwHA" name="getFeatureDescriptorsBehavior" specification="_Aj6VMNc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return new InnerIterator();</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AkDfINc0Ed2xdMAQ04CwHA" name="nextBehavior" specification="_AkBC4Nc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return null;</body>
+        </ownedBehavior>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_AkOeQNc0Ed2xdMAQ04CwHA" name="InnerIterator" visibility="private" clientDependency="_AlXGsNc0Ed2xdMAQ04CwHA" isLeaf="true">
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AkgyINc0Ed2xdMAQ04CwHA" name="hasNextBehavior" specification="_Ake88Nc0Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>return true;&#xA;</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AkmRsNc0Ed2xdMAQ04CwHA" name="nextBehavior" specification="_AkkcgNc0Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>return null;&#xA;</body>
+          </ownedBehavior>
+          <interfaceRealization xmi:id="_AlXGsNc0Ed2xdMAQ04CwHA" name="Iterator&lt;Object>" supplier="_Ak4lkNc0Ed2xdMAQ04CwHA" client="_AkOeQNc0Ed2xdMAQ04CwHA" contract="_Ak4lkNc0Ed2xdMAQ04CwHA"/>
+          <ownedOperation xmi:id="_Ake88Nc0Ed2xdMAQ04CwHA" name="hasNext" method="_AkgyINc0Ed2xdMAQ04CwHA">
+            <ownedParameter xmi:id="_Ake88dc0Ed2xdMAQ04CwHA" name="return" type="_ITdFsNcyEd2xdMAQ04CwHA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_AkkcgNc0Ed2xdMAQ04CwHA" name="next" method="_AkmRsNc0Ed2xdMAQ04CwHA">
+            <ownedParameter xmi:id="_Akkcgdc0Ed2xdMAQ04CwHA" name="return" type="_AEJh8dcyEd2xdMAQ04CwHA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_AkrKMNc0Ed2xdMAQ04CwHA" name="remove"/>
+        </nestedClassifier>
+        <ownedOperation xmi:id="_Aj6VMNc0Ed2xdMAQ04CwHA" name="getFeatureDescriptors" method="_Aj8xcNc0Ed2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_Aj6VMdc0Ed2xdMAQ04CwHA" name="return" type="_Ajv9INc0Ed2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_AkBC4Nc0Ed2xdMAQ04CwHA" name="next" method="_AkDfINc0Ed2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_AkBC4dc0Ed2xdMAQ04CwHA" name="return" type="_AEJh8dcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_o96e0Nc0Ed2xdMAQ04CwHA" name="MySequenceType">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_s8o-MNc0Ed2xdMAQ04CwHA" name="method1Behavior" specification="_s8l64Nc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_s8wS8Nc0Ed2xdMAQ04CwHA" name="method2Behavior" specification="_s8tPoNc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_s8l64Nc0Ed2xdMAQ04CwHA" name="method1" isStatic="true" method="_s8o-MNc0Ed2xdMAQ04CwHA"/>
+        <ownedOperation xmi:id="_s8tPoNc0Ed2xdMAQ04CwHA" name="method2" isStatic="true" method="_s8wS8Nc0Ed2xdMAQ04CwHA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_zjA1QNc0Ed2xdMAQ04CwHA" name="MyUnique">
+        <ownedAttribute xmi:id="_28bBENc0Ed2xdMAQ04CwHA" name="value" visibility="private" type="_AEQ2sNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_28mnQNc0Ed2xdMAQ04CwHA" value=""/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_28CmkNc0Ed2xdMAQ04CwHA" name="MyUniqueBehavior" specification="_27-8MNc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>value=par;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_28J7UNc0Ed2xdMAQ04CwHA" name="hashCodeBehavior" specification="_28G4ANc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>return value;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_28UTYNc0Ed2xdMAQ04CwHA" name="equalsBehavior" specification="_28QB8Nc0Ed2xdMAQ04CwHA">
+          <language>Java</language>
+          <body>if(this == o)&#xA;&#x9;return true;&#xA;if((o == null) || (o.getClass() != this.getClass()))&#xA;&#x9;return false;&#xA;return hashCode()==o.hashCode();</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_27-8MNc0Ed2xdMAQ04CwHA" name="MyUnique" method="_28CmkNc0Ed2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_27-8Mdc0Ed2xdMAQ04CwHA" name="par" type="_AEQ2sNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_28G4ANc0Ed2xdMAQ04CwHA" name="hashCode" method="_28J7UNc0Ed2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_28G4Adc0Ed2xdMAQ04CwHA" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_28QB8Nc0Ed2xdMAQ04CwHA" name="equals" method="_28UTYNc0Ed2xdMAQ04CwHA">
+          <ownedParameter xmi:id="_28QB8dc0Ed2xdMAQ04CwHA" name="o" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_28QB8tc0Ed2xdMAQ04CwHA" name="return" type="_ITdFsNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_CZtjwNc1Ed2xdMAQ04CwHA" name="sndLevel">
+        <packagedElement xmi:type="uml:Class" xmi:id="_FsvawNc1Ed2xdMAQ04CwHA" name="sndLevelImmType">
+          <ownedAttribute xmi:id="_KvHIcNc1Ed2xdMAQ04CwHA" name="s" visibility="protected" type="_26Z5wNcyEd2xdMAQ04CwHA">
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_KvMoANc1Ed2xdMAQ04CwHA" value="null"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuXhkNc1Ed2xdMAQ04CwHA" name="sndLevelImmTypeBehavior" specification="_KuSpEdc1Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>s=&quot;&quot;;</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KujHwNc1Ed2xdMAQ04CwHA" name="getSBehavior" specification="_KufdYNc1Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>return s;</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuwjINc1Ed2xdMAQ04CwHA" name="setSBehavior" specification="_KusRsNc1Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>s = newS;</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Ku-lkNc1Ed2xdMAQ04CwHA" name="initBehavior" specification="_Ku5tENc1Ed2xdMAQ04CwHA">
+            <language>Java</language>
+            <body>s=par;</body>
+          </ownedBehavior>
+          <ownedOperation xmi:id="_KuSpEdc1Ed2xdMAQ04CwHA" name="sndLevelImmType" method="_KuXhkNc1Ed2xdMAQ04CwHA"/>
+          <ownedOperation xmi:id="_KufdYNc1Ed2xdMAQ04CwHA" name="getS" method="_KujHwNc1Ed2xdMAQ04CwHA">
+            <ownedParameter xmi:id="_KufdYdc1Ed2xdMAQ04CwHA" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KusRsNc1Ed2xdMAQ04CwHA" name="setS" method="_KuwjINc1Ed2xdMAQ04CwHA">
+            <ownedParameter xmi:id="_KusRsdc1Ed2xdMAQ04CwHA" name="newS" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Ku5tENc1Ed2xdMAQ04CwHA" name="init" method="_Ku-lkNc1Ed2xdMAQ04CwHA">
+            <ownedParameter xmi:id="_Ku5tEdc1Ed2xdMAQ04CwHA" name="par" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_HywV4NgCEd29yvx8hNN9SQ" name="AUniqueContainer">
+        <ownedAttribute xmi:id="_wbYo0NzNEd2rEe77Fm6Hag" name="aUniqueElement" type="_J9GtkNgCEd29yvx8hNN9SQ" isUnique="false" aggregation="composite" association="_wbBccNzNEd2rEe77Fm6Hag">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wbc6QNzNEd2rEe77Fm6Hag" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wbcTMNzNEd2rEe77Fm6Hag"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_V9Ws0Ny3Ed2YHM4e3usZkQ" name="AUniqueContainerBehavior" specification="_V9KfkNy3Ed2YHM4e3usZkQ">
+          <language>Java</language>
+          <body>aUniqueElement = new HashSet&lt;AUniqueElement>();</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_V9KfkNy3Ed2YHM4e3usZkQ" name="AUniqueContainer" method="_V9Ws0Ny3Ed2YHM4e3usZkQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_J9GtkNgCEd29yvx8hNN9SQ" name="AUniqueElement">
+        <ownedAttribute xmi:id="_ZTydINy3Ed2YHM4e3usZkQ" name="_hashCode" visibility="private" type="_AEQ2sNcyEd2xdMAQ04CwHA">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_ZT3VoNy3Ed2YHM4e3usZkQ" value="0"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ZTT8ANy3Ed2YHM4e3usZkQ" name="AUniqueElementBehavior" specification="_ZTGgoNy3Ed2YHM4e3usZkQ">
+          <language>Java</language>
+          <body>_hashCode = i;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ZTe7INy3Ed2YHM4e3usZkQ" name="equalsBehavior" specification="_ZTb30Ny3Ed2YHM4e3usZkQ">
+          <language>Java</language>
+          <body>return obj instanceof AUniqueElement &amp;&amp; this.hashCode() == obj.hashCode();</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ZTqhUNy3Ed2YHM4e3usZkQ" name="hashCodeBehavior" specification="_ZTmP4Ny3Ed2YHM4e3usZkQ">
+          <language>Java</language>
+          <body>return _hashCode;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_ZTGgoNy3Ed2YHM4e3usZkQ" name="AUniqueElement" method="_ZTT8ANy3Ed2YHM4e3usZkQ">
+          <ownedParameter xmi:id="_ZTGgody3Ed2YHM4e3usZkQ" name="i" type="_AEQ2sNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ZTb30Ny3Ed2YHM4e3usZkQ" name="equals" method="_ZTe7INy3Ed2YHM4e3usZkQ">
+          <ownedParameter xmi:id="_ZTb30dy3Ed2YHM4e3usZkQ" name="obj" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_ZTb30ty3Ed2YHM4e3usZkQ" name="return" type="_ITdFsNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ZTmP4Ny3Ed2YHM4e3usZkQ" name="hashCode" method="_ZTqhUNy3Ed2YHM4e3usZkQ">
+          <ownedParameter xmi:id="_ZTmP4dy3Ed2YHM4e3usZkQ" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_XzenUNy_Ed2rEe77Fm6Hag" name="Component">
+        <ownedAttribute xmi:id="_krSnQNy_Ed2rEe77Fm6Hag" name="Id" visibility="protected" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_LU5KQNzAEd2rEe77Fm6Hag" value=""/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LT3PgNzAEd2rEe77Fm6Hag" name="ComponentBehavior" specification="_LTyXAdzAEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>Id = &quot;&quot;;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LUHHINzAEd2rEe77Fm6Hag" name="ComponentBehavior" specification="_LT_LUNzAEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>Id = id;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LUVJkNzAEd2rEe77Fm6Hag" name="getIdBehavior" specification="_LUPqANzAEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>return Id; </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LUndcNzAEd2rEe77Fm6Hag" name="setIdBehavior" specification="_LUgIsNzAEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>Id = i;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_BdV_4NzMEd2rEe77Fm6Hag" name="hashCodeBehavior" specification="_BdM18NzMEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>return 0;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_BdslMNzMEd2rEe77Fm6Hag" name="equalsBehavior" specification="_Bdi0MNzMEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>return o instanceof Component; </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_LTyXAdzAEd2rEe77Fm6Hag" name="Component" method="_LT3PgNzAEd2rEe77Fm6Hag"/>
+        <ownedOperation xmi:id="_LT_LUNzAEd2rEe77Fm6Hag" name="Component" method="_LUHHINzAEd2rEe77Fm6Hag">
+          <ownedParameter xmi:id="_LT_LUdzAEd2rEe77Fm6Hag" name="id" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LUPqANzAEd2rEe77Fm6Hag" name="getId" method="_LUVJkNzAEd2rEe77Fm6Hag">
+          <ownedParameter xmi:id="_LUPqAdzAEd2rEe77Fm6Hag" name="return" type="_26Z5wNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LUgIsNzAEd2rEe77Fm6Hag" name="setId" method="_LUndcNzAEd2rEe77Fm6Hag">
+          <ownedParameter xmi:id="_LUgIsdzAEd2rEe77Fm6Hag" name="i" type="_26Z5wNcyEd2xdMAQ04CwHA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_BdM18NzMEd2rEe77Fm6Hag" name="hashCode" method="_BdV_4NzMEd2rEe77Fm6Hag">
+          <ownedParameter xmi:id="_BdM18dzMEd2rEe77Fm6Hag" name="return" type="_AEQ2sNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Bdi0MNzMEd2rEe77Fm6Hag" name="equals" method="_BdslMNzMEd2rEe77Fm6Hag">
+          <ownedParameter xmi:id="_Bdi0MdzMEd2rEe77Fm6Hag" name="o" type="_AEJh8dcyEd2xdMAQ04CwHA"/>
+          <ownedParameter xmi:id="_Bdi0MtzMEd2rEe77Fm6Hag" name="return" type="_ITdFsNcyEd2xdMAQ04CwHA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ZXDS4Ny_Ed2rEe77Fm6Hag" name="Composite">
+        <generalization xmi:id="_c3ukUNy_Ed2rEe77Fm6Hag" general="_XzenUNy_Ed2rEe77Fm6Hag"/>
+        <ownedAttribute xmi:id="_zdZBQNzNEd2rEe77Fm6Hag" name="children" type="_XzenUNy_Ed2rEe77Fm6Hag" isUnique="false" aggregation="shared" association="_zcu58NzNEd2rEe77Fm6Hag">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zddSsNzNEd2rEe77Fm6Hag" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zdcroNzNEd2rEe77Fm6Hag"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_kcPWQdzNEd2rEe77Fm6Hag" name="CompositeBehavior" specification="_kZwqANzNEd2rEe77Fm6Hag">
+          <language>Java</language>
+          <body>children = new HashSet&lt;Component>();</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_kZwqANzNEd2rEe77Fm6Hag" name="Composite" method="_kcPWQdzNEd2rEe77Fm6Hag"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_a0zqUNy_Ed2rEe77Fm6Hag" name="Leaf">
+        <generalization xmi:id="_cntyYNy_Ed2rEe77Fm6Hag" general="_XzenUNy_Ed2rEe77Fm6Hag"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_wbBccNzNEd2rEe77Fm6Hag" name="A_AUniqueContainer_AUniqueElement" memberEnd="_wbYo0NzNEd2rEe77Fm6Hag _wbdhUNzNEd2rEe77Fm6Hag">
+        <ownedEnd xmi:id="_wbdhUNzNEd2rEe77Fm6Hag" name="aUniqueContainer" type="_HywV4NgCEd29yvx8hNN9SQ" isUnique="false" association="_wbBccNzNEd2rEe77Fm6Hag">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wbhLsNzNEd2rEe77Fm6Hag" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wbiZ0NzNEd2rEe77Fm6Hag"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_zcu58NzNEd2rEe77Fm6Hag" name="A_Composite_Component" memberEnd="_zdZBQNzNEd2rEe77Fm6Hag _zdd5wNzNEd2rEe77Fm6Hag">
+        <ownedEnd xmi:id="_zdd5wNzNEd2rEe77Fm6Hag" name="parent" type="_ZXDS4Ny_Ed2rEe77Fm6Hag" isUnique="false" association="_zcu58NzNEd2rEe77Fm6Hag">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zdiLMNzNEd2rEe77Fm6Hag" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zdiLMdzNEd2rEe77Fm6Hag"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AEJh8dcyEd2xdMAQ04CwHA" name="Object"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AEQ2sNcyEd2xdMAQ04CwHA" name="int"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ITdFsNcyEd2xdMAQ04CwHA" name="boolean"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_26Z5wNcyEd2xdMAQ04CwHA" name="String"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ajv9INc0Ed2xdMAQ04CwHA" name="Iterator"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Ak4lkNc0Ed2xdMAQ04CwHA" name="Iterator&lt;Object>"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_6enQIN2wEd2RuLnlWI0TOA" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_-m514Nf3Ed29yvx8hNN9SQ" name="lang">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_COr04Nf4Ed29yvx8hNN9SQ" name="Comparable">
+          <ownedOperation xmi:id="_GPILgNf4Ed29yvx8hNN9SQ" name="compareTo">
+            <ownedParameter xmi:id="_IoczUNf4Ed29yvx8hNN9SQ" name="o"/>
+            <ownedParameter xmi:id="_I14LUNf4Ed29yvx8hNN9SQ" name="" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_GfUrEtcxEd2xdMAQ04CwHA">
+      <eAnnotations xmi:id="_GfUrE9cxEd2xdMAQ04CwHA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="__9v_ANcxEd2xdMAQ04CwHA">
+      <eAnnotations xmi:id="__90QcNcxEd2xdMAQ04CwHA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_C6J2UDRlEdyr699Q7nZK0g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML4Java_PROFILES/UML4Java.profile.uml#_P6ay4OK8EdurhvLQaCx5wg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_C4pNUNf3Ed29yvx8hNN9SQ">
+      <eAnnotations xmi:id="_C4qbcNf3Ed29yvx8hNN9SQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_j-bv4LcxEd2qbZgDuF9t1w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml#_XJtfYIQcEd2j7PHkj8Dq7g"/>
+    </profileApplication>
+  </uml:Model>
+  <UML4Java:Imports xmi:id="_AEJh8NcyEd2xdMAQ04CwHA" base_Classifier="_blcwQNcxEd2xdMAQ04CwHA"/>
+  <UML4Java:NoGenCode xmi:id="_AEQPoNcyEd2xdMAQ04CwHA" base_Element="_AEJh8dcyEd2xdMAQ04CwHA"/>
+  <UML4Java:NoGenCode xmi:id="_AEXkYNcyEd2xdMAQ04CwHA" base_Element="_AEQ2sNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:NoGenCode xmi:id="_ITp6ANcyEd2xdMAQ04CwHA" base_Element="_ITdFsNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_kwH6oNcyEd2xdMAQ04CwHA" base_Classifier="_S_qwwNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_kwKW4NcyEd2xdMAQ04CwHA" base_Classifier="_aoLaQNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_26TzINcyEd2xdMAQ04CwHA" base_Operation="_26PhsNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:NoGenCode xmi:id="_26rmkNcyEd2xdMAQ04CwHA" base_Element="_26Z5wNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_DQuWMNczEd2xdMAQ04CwHA" base_Classifier="__bS8wNcyEd2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_DQynoNczEd2xdMAQ04CwHA" base_Operation="_DQuWMdczEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_RWog8NczEd2xdMAQ04CwHA" base_Classifier="_L3pvwNczEd2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_RWsLUNczEd2xdMAQ04CwHA" base_Operation="_RWog8dczEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_g89VkNczEd2xdMAQ04CwHA" base_Classifier="_byteQNczEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_nwKHsNczEd2xdMAQ04CwHA" base_Classifier="_j3w50NczEd2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_nwNyENczEd2xdMAQ04CwHA" base_Operation="_nwKuwNczEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_AjvWENc0Ed2xdMAQ04CwHA" base_Classifier="_7z90QNczEd2xdMAQ04CwHA">
+    <importsValues>java.util.Iterator</importsValues>
+  </UML4Java:Imports>
+  <UML4Java:NoGenCode xmi:id="_Aj5uINc0Ed2xdMAQ04CwHA" base_Element="_Ajv9INc0Ed2xdMAQ04CwHA"/>
+  <UML4Java:NoGenCode xmi:id="_AlLggNc0Ed2xdMAQ04CwHA" base_Element="_Ak4lkNc0Ed2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_s8lT0Nc0Ed2xdMAQ04CwHA" base_Classifier="_o96e0Nc0Ed2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_28B_gNc0Ed2xdMAQ04CwHA" base_Operation="_27-8MNc0Ed2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_KuSpENc1Ed2xdMAQ04CwHA" base_Classifier="_FsvawNc1Ed2xdMAQ04CwHA"/>
+  <UML4Java:Create xmi:id="_KuW6gNc1Ed2xdMAQ04CwHA" base_Operation="_KuSpEdc1Ed2xdMAQ04CwHA"/>
+  <propcheck:Initialized xmi:id="_IsA6INf3Ed29yvx8hNN9SQ" base_Class="_L3pvwNczEd2xdMAQ04CwHA" Initializer="_RXmKQNczEd2xdMAQ04CwHA"/>
+  <propcheck:Immutable xmi:id="_aCNNENf7Ed29yvx8hNN9SQ" base_Class="__bS8wNcyEd2xdMAQ04CwHA"/>
+  <propcheck:Immutable xmi:id="_qDVuYNf7Ed29yvx8hNN9SQ" base_Class="_FsvawNc1Ed2xdMAQ04CwHA"/>
+  <propcheck:Language xmi:id="_h8vlQNf8Ed29yvx8hNN9SQ" regexp="^((ht|f)tp(s?)\:\/\/|~/|/)?([\w]+:\w+@)?([a-zA-Z]{1}([\w\-]+\.)+([\w]{2,5}))(:[\d]{1,5})?((/?\w+/)+|/?)(\w+\.[\w]{3,4})?((\?\w+=\w+)?(&amp;amp;amp;amp;\w+=\w+)*)?" base_Property="_nwkXYNczEd2xdMAQ04CwHA"/>
+  <propcheck:NotNull xmi:id="_KlTIQNf9Ed29yvx8hNN9SQ" base_Parameter="_g8_KwtczEd2xdMAQ04CwHA"/>
+  <propcheck:Language xmi:id="_XxnjINf-Ed29yvx8hNN9SQ" base_Parameter="_g8_KwdczEd2xdMAQ04CwHA" regexp="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+  <UML4Java:Imports xmi:id="_PmeqUNy3Ed2YHM4e3usZkQ" base_Classifier="_HywV4NgCEd29yvx8hNN9SQ">
+    <importsValues>java.util.HashSet</importsValues>
+  </UML4Java:Imports>
+  <UML4Java:Imports xmi:id="_PmnNMNy3Ed2YHM4e3usZkQ" base_Classifier="_J9GtkNgCEd29yvx8hNN9SQ"/>
+  <UML4Java:Create xmi:id="_V9WFwNy3Ed2YHM4e3usZkQ" base_Operation="_V9KfkNy3Ed2YHM4e3usZkQ"/>
+  <UML4Java:Create xmi:id="_ZTTU8Ny3Ed2YHM4e3usZkQ" base_Operation="_ZTGgoNy3Ed2YHM4e3usZkQ"/>
+  <UML4Java:Imports xmi:id="_LThRQNzAEd2rEe77Fm6Hag" base_Classifier="_a0zqUNy_Ed2rEe77Fm6Hag"/>
+  <UML4Java:Imports xmi:id="_LTk7oNzAEd2rEe77Fm6Hag" base_Classifier="_ZXDS4Ny_Ed2rEe77Fm6Hag">
+    <importsValues>java.util.HashSet</importsValues>
+  </UML4Java:Imports>
+  <UML4Java:Imports xmi:id="_LTyXANzAEd2rEe77Fm6Hag" base_Classifier="_XzenUNy_Ed2rEe77Fm6Hag"/>
+  <UML4Java:Create xmi:id="_LT2ocNzAEd2rEe77Fm6Hag" base_Operation="_LTyXAdzAEd2rEe77Fm6Hag"/>
+  <UML4Java:Create xmi:id="_LUGgENzAEd2rEe77Fm6Hag" base_Operation="_LT_LUNzAEd2rEe77Fm6Hag"/>
+  <UML4Java:Create xmi:id="_kcPWQNzNEd2rEe77Fm6Hag" base_Operation="_kZwqANzNEd2rEe77Fm6Hag"/>
+  <propcheck:Unique xmi:id="_y8WJsNzNEd2rEe77Fm6Hag" base_Association="_wbBccNzNEd2rEe77Fm6Hag"/>
+  <propcheck:Unique xmi:id="_38cmgNzNEd2rEe77Fm6Hag" UniquenessProperty="Id" base_Association="_zcu58NzNEd2rEe77Fm6Hag"/>
+  <UML4Java:NoGenCode xmi:id="_OU76UN2xEd2RuLnlWI0TOA" base_Element="_6enQIN2wEd2RuLnlWI0TOA"/>
+  <UML4Java:NoGenCode xmi:id="_SrxXsN2xEd2RuLnlWI0TOA" base_Element="_COr04Nf4Ed29yvx8hNN9SQ"/>
+  <UML4Java:NoGenCode xmi:id="_cq7IcN2xEd2RuLnlWI0TOA" base_Element="_-m514Nf3Ed29yvx8hNN9SQ"/>
+  <propcheck:explicit xmi:id="_tVfBQN2xEd2RuLnlWI0TOA" base_Realization="_Ph2O0N2wEd2RuLnlWI0TOA"/>
+  <propcheck:explicit xmi:id="_u2T60N2xEd2RuLnlWI0TOA" base_Realization="_PAaLIN2vEd2RuLnlWI0TOA"/>
+  <UML4Java:Imports xmi:id="_27-VINc0Ed2xdMAQ04CwHA" base_Classifier="_zjA1QNc0Ed2xdMAQ04CwHA"/>
+  <propcheck:Unique xmi:id="_KbrCYN20Ed2RuLnlWI0TOA" base_Class="_zjA1QNc0Ed2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_1ulKYNczEd2xdMAQ04CwHA" base_Classifier="_xpGiwNczEd2xdMAQ04CwHA"/>
+  <propcheck:Comparable xmi:id="_f2GjoN20Ed2RuLnlWI0TOA" base_Class="_xpGiwNczEd2xdMAQ04CwHA"/>
+  <UML4Java:Imports xmi:id="_26O6oNcyEd2xdMAQ04CwHA" base_Classifier="_yK-9QNcyEd2xdMAQ04CwHA"/>
+  <propcheck:Immutable xmi:id="_zv5YkN20Ed2RuLnlWI0TOA" base_Class="_yK-9QNcyEd2xdMAQ04CwHA"/>
+  <propcheck:Initialized xmi:id="_zv700N20Ed2RuLnlWI0TOA" base_Class="_yK-9QNcyEd2xdMAQ04CwHA" Initializer="_26_IkNcyEd2xdMAQ04CwHA"/>
+  <propcheck:NotNull xmi:id="_2XAUAO7nEd2PHNEbwCCegw" base_Operation="_AkkcgNc0Ed2xdMAQ04CwHA"/>
+  <propcheck:Language xmi:id="_NyqtMO7oEd2PHNEbwCCegw" base_Parameter="_g8_Kw9czEd2xdMAQ04CwHA" regexp="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+</xmi:XMI>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping source="pathmap://PROPCHECK_PROFILES/" target="platform:/plugin/propcheck/model/">
+      </mapping>
+   </extension>
+   <extension point="org.eclipse.uml2.uml.dynamic_package">
+      <profile location="pathmap://PROPCHECK_PROFILES/propcheck.profile.uml" uri="propcheck">
+      </profile>
+   </extension>
+</plugin>

@@ -1,0 +1,30 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+aop=aop.concat("_").concat(context.getVariable("opName").toString().replace('[',' ').replace(']',' ').replaceAll(" ","").replaceAll("name=","")); 
+aop=aop.concat("_").concat(context.getVariable("parName").toString().replace('[',' ').replace(']',' ').replaceAll(" ","").replaceAll("name=",""));
+context.setVariable("aopxml",aop.concat("_NotNullParameter\"/>\n")); 
+%>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+//This code is generate automatically, DO NOT MODIFY!
+package <c:get select="$classPackageName" />.aspects;
+
+import <c:get select="$classPackageName" />.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_<c:get select="$opName"/>_<c:get select="$parName" />_NotNullParameter{
+
+    /*
+	 * Checks if a method parameter is Null
+	 */					
+	before(<c:iterate select="$op/ownedParameter/@name" var="par" delimiter=", ">Object <c:get select="$par" /></c:iterate>): call(* <c:get select="$className"/>.<c:get select="$opName"/>(..))
+	    && args(<c:iterate select="$op/ownedParameter/@name" var="par" delimiter=", "><c:get select="$par" /></c:iterate>){
+		if (<c:get select="$parName"/>==null){
+			Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+						"Null value detected for parameter named <c:get select="$parName"/>",
+						new Throwable());
+		}
+	}
+}

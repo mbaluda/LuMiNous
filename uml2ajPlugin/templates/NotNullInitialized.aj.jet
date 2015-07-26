@@ -1,0 +1,36 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+context.setVariable("aopxml",aop.concat("_NotNullInitialized\"/>\n")); 
+%>
+<c:replaceStrings 
+		replace="%class,%package" 
+		with="{$className},{$classPackageName}">
+//This code is generate automatically, DO NOT MODIFY!
+package %package.aspects;
+
+import %package.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_NotNullInitialized{
+
+	pointcut blockedMethods(): target(%class) 
+	<c:if test="count($op) > 0">
+    	&& !cflow(call(* <c:get select="$opClassPackageName" />.<c:get 
+    	                        select="$opClassName" />.<c:get 
+    	                        select="$opName" />(..)))</c:if>
+		&& !cflow(call(*.new(..))) 
+		&& call(* *.*(..));
+
+    /*
+	 * Checks if an object is Null when target
+	 */					
+	before(Object t):!cflow(adviceexecution()) &&  blockedMethods() && target(t) && if (t==null){
+	    Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+				"Accessing a Null object of type %class",
+				new Throwable());
+	}
+}
+</c:replaceStrings>

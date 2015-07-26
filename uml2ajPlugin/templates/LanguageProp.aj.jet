@@ -1,0 +1,29 @@
+<%-- --%>
+<% //generating the corresponding aspect in aop.xml	
+String aop=context.getVariable("aopxml").toString();
+aop=aop.concat("<aspect name=\"").concat(context.getVariable("classPackageName").toString()); 
+aop=aop.concat(".aspects.").concat(context.getVariable("classFileName").toString()); 
+aop=aop.concat("_").concat(context.getVariable("propName").toString().replace('[',' ').replace(']',' ').replaceAll(" ","").replaceAll("name=",""));
+context.setVariable("aopxml",aop.concat("_Language\"/>\n")); 
+%>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+//This code is generate automatically, DO NOT MODIFY!
+package <c:get select="$classPackageName" />.aspects;
+
+import <c:get select="$classPackageName" />.*;
+import java.util.logging.*;
+
+public aspect <c:get select="$classFileName" />_<c:get select="$propName"/>_Language{
+
+	/*
+	 * Checks if an attribute is set matching a given regexp
+	 */			
+	before(Object arg): !cflow(adviceexecution()) && set(* <c:get select="$className"/>.<c:get select="$propName"/>) && args(arg) {
+		<%-- in the regexp backslashes are escaped --%>
+		if (arg==null || !arg.toString().matches("<f:replaceAll value="\\" replacement="\\\\"><c:get select="$regexp"/></f:replaceAll>")){
+			Logger.getLogger("ch.unisi.inf.luminous").log(Level.SEVERE,
+				"Language mismatch when setting attribute <c:get select="$className"/>.<c:get select="$propName"/>",
+				new Throwable());
+		}
+	}
+}

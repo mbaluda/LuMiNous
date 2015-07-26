@@ -1,0 +1,30 @@
+<aspectj>
+	<aspects>
+<aspect name="testModel.aspects.MyImmType_Immutable"/>
+<aspect name="testModel.sndLevel.aspects.sndLevelImmType_Immutable"/>
+<aspect name="testModel.aspects.MyImmInitType_Immutable"/>
+<aspect name="testModel.aspects.MyInitType_NotNullInitialized"/>
+<aspect name="testModel.aspects.MyInitType_Initialized"/>
+<aspect name="testModel.aspects.MyImmInitType_NotNullInitialized"/>
+<aspect name="testModel.aspects.MyImmInitType_Initialized"/>
+<aspect name="testModel.aspects.AUniqueContainer_Unique"/>
+<aspect name="testModel.aspects.Composite_Unique"/>
+<aspect name="testModel.aspects.MyUnique_Unique"/>
+<aspect name="testModel.aspects.MyLanguage_sendEmail_address_Language"/>
+<aspect name="testModel.aspects.MyLanguage_sendEmail_sender_Language"/>
+<aspect name="testModel.aspects.MyLanguageProperty_url_Language"/>
+<aspect name="testModel.aspects.MyNotNullReturn_InnerIterator_next_NotNullReturn"/>
+<aspect name="testModel.aspects.MyLanguage_sendEmail_subject_NotNullParameter"/>
+<aspect name="testModel.aspects.CompChild2_implements_Comparable_explicitly"/>
+<aspect name="testModel.aspects.CompChild_implements_Comparable_explicitly"/>
+<aspect name="testModel.aspects.MyNonComparable_Comparable"/>
+
+	</aspects>
+	
+	<weaver options="-verbose -showWeaveInfo -Xset:weaveJavaxPackages=true">
+		<exclude within="org.apache.juli..*"/>
+		<exclude within="org.apache.log4j..*"/>
+		<exclude within="org.apache.commons.logging..*"/>
+		<exclude within="org.aspectj..*"/>
+	</weaver>
+</aspectj>
